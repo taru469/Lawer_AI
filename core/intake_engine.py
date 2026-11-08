@@ -84,14 +84,39 @@ class IntakeEngine:
         """
         lowered = text.lower()
 
-        # Extract amounts in INR (k, thousand, lakhs, plain numbers)
-        # Look for deposit keywords
-        deposit_paid = 50000.0  # sensible default if unstated
-        amount_withheld = 30000.0
-        monthly_rent = 25000.0
+        # Remove dates/years (e.g., 2020 to 2035) so calendar years are not confused with currency
+        # Clean phrases like "october 2026", "in 2026", "year 2026", "2024", "2025", "2026"
+        cleaned_for_amounts = re.sub(r"\b(19\d\d|20[2-3]\d)\b", "", lowered)
 
-        # Regex for amounts like 50k, 50,000, 50000, 1 lakh
-        amount_matches = re.findall(r"(?:rs\.?|inr|₹)?\s*(\d+(?:,\d+)*(?:\.\d+)?)\s*(k|thousand|lakh|lac)?", lowered)
+        # Context-aware extraction for specific keywords
+        # 1. Deposit Paid
+        dep_match = re.search(r"(?:deposit|advance|security)(?:\s+paid|\s+amount|\s+was|\s+of)?(?:\s+is|\s*:|\s*-)?\s*(?:rs\.?|inr|₹)?\s*(\d+(?:,\d+)*(?:\.\d+)?)\s*(k|thousand|lakh|lac)?", cleaned_for_amounts)
+        # 2. Amount Withheld / Deducted
+        withheld_match = re.search(r"(?:deducted|deduct|withheld|cut|kept|refused to return|holding)(?:\s+amount|\s+only)?(?:\s+is|\s*:|\s*-)?\s*(?:rs\.?|inr|₹)?\s*(\d+(?:,\d+)*(?:\.\d+)?)\s*(k|thousand|lakh|lac)?", cleaned_for_amounts)
+        # 3. Monthly Rent
+        rent_match = re.search(r"(?:rent)(?:\s+was|\s+is|\s+of)?(?:\s*:|\s*-)?\s*(?:rs\.?|inr|₹)?\s*(\d+(?:,\d+)*(?:\.\d+)?)\s*(k|thousand|lakh|lac)?", cleaned_for_amounts)
+
+        def parse_val(m):
+            if not m:
+                return None
+            val_clean = m.group(1).replace(",", "")
+            try:
+                num = float(val_clean)
+                unit = m.group(2)
+                if unit in ["k", "thousand"]:
+                    num *= 1000
+                elif unit in ["lakh", "lac"]:
+                    num *= 100000
+                return num
+            except ValueError:
+                return None
+
+        ctx_dep = parse_val(dep_match)
+        ctx_withheld = parse_val(withheld_match)
+        ctx_rent = parse_val(rent_match)
+
+        # Fallback regex for all amounts
+        amount_matches = re.findall(r"(?:rs\.?|inr|₹)?\s*(\d+(?:,\d+)*(?:\.\d+)?)\s*(k|thousand|lakh|lac)?", cleaned_for_amounts)
         extracted_nums = []
         for val_str, unit in amount_matches:
             val_clean = val_str.replace(",", "")
@@ -101,17 +126,24 @@ class IntakeEngine:
                     num *= 1000
                 elif unit in ["lakh", "lac"]:
                     num *= 100000
+                # Filter out small integers like day of month (e.g. 1st, 14, 31)
                 if num >= 1000:
                     extracted_nums.append(num)
             except ValueError:
                 continue
 
-        if len(extracted_nums) >= 2:
-            deposit_paid = max(extracted_nums)
-            amount_withheld = min(extracted_nums)
-        elif len(extracted_nums) == 1:
-            deposit_paid = extracted_nums[0]
-            amount_withheld = extracted_nums[0]
+        deposit_paid = ctx_dep or (max(extracted_nums) if extracted_nums else 50000.0)
+        
+        if ctx_withheld:
+            amount_withheld = ctx_withheld
+        elif len(extracted_nums) >= 2:
+            # Pick the second largest or the remainder
+            remaining = [n for n in extracted_nums if n < deposit_paid]
+            amount_withheld = max(remaining) if remaining else min(extracted_nums)
+        else:
+            amount_withheld = deposit_paid
+
+        monthly_rent = ctx_rent or 25000.0
 
         # Extract City
         city = "Bengaluru"
@@ -127,13 +159,13 @@ class IntakeEngine:
         excuses = []
         if any(w in lowered for w in ["paint", "painting", "whitewash", "colour"]):
             excuses.append("Painting Charges")
-        if any(w in lowered for w in ["clean", "cleaning", "maid", "dirty"]):
+        if any(w in lowered for w in ["deep clean", "deep cleaning", "cleaning charges", "cleaning cost"]):
             excuses.append("Deep Cleaning Charges")
-        if any(w in lowered for w in ["ghost", "not pick", "not answering", "blocked", "call cut", "phone off"]):
+        if any(w in lowered for w in ["ghost", "not pick", "not answering", "blocked", "call cut", "phone off", "not responding"]):
             excuses.append("Landlord Unresponsive / Ghosting")
-        if any(w in lowered for w in ["notice", "shortfall", "sudden", "lockin", "lock-in"]):
+        if any(w in lowered for w in ["shortfall", "sudden vacancy", "lockin", "lock-in", "no notice", "without notice"]):
             excuses.append("Notice Period Shortfall / Lock-in Dispute")
-        if any(w in lowered for w in ["damage", "repair", "broken", "tap", "geyser", "seepage"]):
+        if any(w in lowered for w in ["tap", "geyser", "seepage", "repair", "broken", "damage", "fixtures"]):
             excuses.append("Property Damage / Fixture Repair")
         if not excuses:
             excuses.append("Unexplained Withholding")
