@@ -67,8 +67,9 @@ We evaluated DepositMitra across 5 diverse test scenarios (logged unedited in `r
 ---
 
 ### 4. The Prototype
-- **Tech Stack:** Python 3.12, Streamlit 1.40+, Google Gemini API (with 100% offline fallback), `fpdf2`.
-- **How to Run:**
+- **Live Deployed App:** [https://deposit-mitra.streamlit.app](https://deposit-mitra.streamlit.app)
+- **GitHub Repository:** [https://github.com/taru469/Lawer_AI](https://github.com/taru469/Lawer_AI)
+- **Tech Stack:** Python 3.12, Streamlit, Google Gemini API (with 100% offline fallback), `fpdf2`.
   ```bash
   git clone <repo_url> && cd KUku
   pip install -r requirements.txt

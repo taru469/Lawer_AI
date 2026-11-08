@@ -2,6 +2,9 @@
 ### Pre-Litigation AI Paralegal for Indian Renter Security Deposit Recovery
 **Submission for Kuku AI Generalist Assignment — Problem 2**
 
+🌐 **Live Deployed Prototype:** [https://deposit-mitra.streamlit.app](https://deposit-mitra.streamlit.app)  
+📁 **GitHub Repository:** [https://github.com/taru469/Lawer_AI](https://github.com/taru469/Lawer_AI)
+
 ---
 
 ## 📌 Executive Summary

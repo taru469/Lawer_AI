@@ -197,14 +197,12 @@ def build_pdf():
     pdf.set_font("Helvetica", "", 8)
     pdf.set_text_color(30, 41, 59)
     pdf.multi_cell(0, 3.7, (
+        "- Live Public App: https://deposit-mitra.streamlit.app\n"
+        "- GitHub Repository: https://github.com/taru469/Lawer_AI\n"
         "- Structure: Clean Python architecture separating statutes, guardrails, intake, evaluation, notice generation, "
         "and negotiation simulation.\n"
         "- Model Swapping & Zero-Cost Run: Fully operational in 100% offline heuristic mode without API keys, while seamlessly "
-        "connecting to Google Gemini (or interview APIs) when provided.\n"
-        "- Quick Run Instructions:\n"
-        "   $ cd KUku && pip install -r requirements.txt\n"
-        "   $ python3 scripts/run_eval.py    # Runs batch evaluation & regenerates raw outputs\n"
-        "   $ streamlit run app.py           # Launches interactive web application"
+        "connecting to Google Gemini (or interview APIs) when provided."
     ))
     pdf.ln(2)
 
