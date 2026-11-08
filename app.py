@@ -296,6 +296,20 @@ with tab4:
     Practice asserting your rights without losing your temper or making legal concessions!
     """)
 
+    # Quick action prompt buttons
+    st.markdown("##### 💬 Quick Prompts (Click to test negotiation):")
+    bcol1, bcol2, bcol3 = st.columns(3)
+    quick_msg = None
+    with bcol1:
+        if st.button("🎨 'Why ₹28k painting without bills?'"):
+            quick_msg = "Why are you deducting 28k for painting? You have not shared any GST invoice or contractor bill."
+    with bcol2:
+        if st.button("🚰 'The tap was already old/leaking'"):
+            quick_msg = "The bathroom tap was already old and leaking when I moved in. That is landlord maintenance under Model Tenancy Act."
+    with bcol3:
+        if st.button("⚖️ 'I will issue a Legal Demand Notice'"):
+            quick_msg = "If you do not refund the balance, I will have to issue a formal 15-day legal notice with 18% statutory interest."
+
     # Display dialogue history
     for chat in st.session_state.chat_history:
         if chat["role"] == "user":
@@ -313,7 +327,7 @@ with tab4:
                     """, unsafe_allow_html=True)
 
     # Chat input
-    tenant_input = st.chat_input("Say something to the landlord (e.g. 'Why did you deduct 35k for painting without bills?')")
+    tenant_input = st.chat_input("Say something to the landlord (e.g. 'Why did you deduct 35k for painting without bills?')") or quick_msg
     if tenant_input:
         st.session_state.chat_history.append({"role": "user", "content": tenant_input})
         

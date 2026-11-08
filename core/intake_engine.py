@@ -198,6 +198,15 @@ class IntakeEngine:
         landlord_name = "Landlord"
         tenant_name = "Tenant"
 
+        # Look for phrases like "landlord Venkat Rao", "owner Suresh", "Mr. Sharma"
+        landlord_match = re.search(r"(?:landlord|owner|lessor)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)", text)
+        if landlord_match:
+            landlord_name = landlord_match.group(1).strip()
+
+        # Look for move out dates like "31st October 2026", "15th August"
+        date_match = re.search(r"(\d{1,2}(?:st|nd|rd|th)?\s+(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+\d{4})?)", text, re.IGNORECASE)
+        move_out_date = date_match.group(1) if date_match else "30 days ago"
+
         return {
             "tenant_name": tenant_name,
             "landlord_name": landlord_name,
@@ -206,12 +215,12 @@ class IntakeEngine:
             "deposit_paid": deposit_paid,
             "amount_withheld": amount_withheld,
             "move_in_date": "1 year ago",
-            "move_out_date": "30 days ago",
+            "move_out_date": move_out_date,
             "rental_agreement_present": has_agreement,
             "notice_period_served": notice_served,
             "move_out_inspection_done": True,
             "landlord_excuses": excuses,
             "evidence_present": evidence,
             "missing_evidence": missing,
-            "narrative_summary": f"Landlord in {city} is unlawfully withholding ₹{amount_withheld:,.0f} out of ₹{deposit_paid:,.0f} deposit citing {', '.join(excuses)}."
+            "narrative_summary": f"Landlord {landlord_name} in {city} is unlawfully withholding ₹{amount_withheld:,.0f} out of ₹{deposit_paid:,.0f} deposit citing {', '.join(excuses)}."
         }
