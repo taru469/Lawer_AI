@@ -1,0 +1,17 @@
+{
+  "id": "CASE-04",
+  "title": "Mumbai Monsoon Seepage & Old Appliance Penalty",
+  "tenant_name": "Neha Mehra",
+  "landlord_name": "Ashok Merchant",
+  "city": "Mumbai",
+  "user_prompt": "I lived in Andheri West Mumbai for 2 years. Deposit was 100000. Landlord deducted 40000 stating water seepage dampness on the bedroom wall and replacing the 8-year-old geyser that stopped heating. I told him during monsoon that seepage comes from the society terrace, and geyser was already ancient when I moved in. He refuses to listen.",
+  "monthly_rent": 35000,
+  "deposit_paid": 100000,
+  "amount_withheld": 40000,
+  "move_in_date": "2024-09-01",
+  "move_out_date": "2026-09-01",
+  "rental_agreement_present": true,
+  "notice_period_served": true,
+  "evidence_present": ["Old WhatsApp chats complaining about terrace seepage", "Bank Statement", "Registered Leave & License Agreement"],
+  "landlord_excuses": ["Structural Seepage Dampness", "Aging Geyser Replacement"]
+}

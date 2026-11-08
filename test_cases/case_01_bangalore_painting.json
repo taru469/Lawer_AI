@@ -1,0 +1,17 @@
+{
+  "id": "CASE-01",
+  "title": "Bangalore 35k Repainting Scam",
+  "tenant_name": "Rohan Sharma",
+  "landlord_name": "Suresh Reddy",
+  "city": "Bengaluru",
+  "user_prompt": "Bhaiya i stayed in Bellandur Bangalore for 11 months, paid 80000 deposit via UPI. Handed over keys on 1st October, house was totally clean. Now landlord Suresh Reddy deducted 35000 saying painting cost 25000 and deep clean 10000. He refused to give any painter bill or GST invoice. Agreement has standard 11 months.",
+  "monthly_rent": 28000,
+  "deposit_paid": 80000,
+  "amount_withheld": 35000,
+  "move_in_date": "2025-11-01",
+  "move_out_date": "2026-10-01",
+  "rental_agreement_present": true,
+  "notice_period_served": true,
+  "evidence_present": ["UPI Payment Confirmation", "Rental Agreement PDF", "Move-out Handover WhatsApp Message"],
+  "landlord_excuses": ["Painting Charges", "Deep Cleaning Charges"]
+}

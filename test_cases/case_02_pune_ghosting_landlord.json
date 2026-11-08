@@ -1,0 +1,17 @@
+{
+  "id": "CASE-02",
+  "title": "Pune Unresponsive / Ghosting Landlord",
+  "tenant_name": "Pooja Kulkarni",
+  "landlord_name": "Mahesh Joshi",
+  "city": "Pune",
+  "user_prompt": "I vacated my 1BHK in Wakad Pune on 15th August 2026. Deposit was 60k. It has been over 50 days now. Landlord Mahesh Joshi kept saying 'accounts person will transfer tomorrow' and now he is not taking my calls at all. WhatsApp messages show double blue tick but zero response. Keys were handed over in front of security guard.",
+  "monthly_rent": 18000,
+  "deposit_paid": 60000,
+  "amount_withheld": 60000,
+  "move_in_date": "2025-08-15",
+  "move_out_date": "2026-08-15",
+  "rental_agreement_present": true,
+  "notice_period_served": true,
+  "evidence_present": ["Bank Transfer Receipt", "WhatsApp Blue Tick Screenshots", "Key Handover Register Entry"],
+  "landlord_excuses": ["Ghosting / Total Non-Response", "Delayed Accounting"]
+}

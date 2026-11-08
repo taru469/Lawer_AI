@@ -1,0 +1,137 @@
+================================================================================
+UNEDITED RAW ENGINE OUTPUT: CASE-03 - Gurgaon Disputed Notice Period Penalty
+================================================================================
+
+[RAW USER PROMPT]:
+I rented a flat in Sector 48 Gurgaon. I gave 1 month written notice on email on 1st July and vacated 31st July. Deposit was 120000. Landlord cut 45000 saying orally he told me notice period is 2 months, so he deducted 1 month rent as penalty for sudden vacancy. Our written agreement clearly says 1 month notice by either party.
+
+[GUARDRAIL CHECK]:
+Is Safe: True
+Triage Category: SAFE_TENANCY_DISPUTE
+Reason: Within residential tenancy dispute parameters.
+System Action: Proceed with tenancy fact intake and dispute evaluation.
+
+[STRUCTURED CASE FACTS EXTRACTED]:
+{
+  "tenant_name": "Aman Verma",
+  "landlord_name": "Vikram Singh",
+  "city": "Gurgaon",
+  "monthly_rent": 45000,
+  "deposit_paid": 120000,
+  "amount_withheld": 45000,
+  "move_in_date": "2025-07-01",
+  "move_out_date": "2026-07-31",
+  "rental_agreement_present": true,
+  "notice_period_served": true,
+  "move_out_inspection_done": true,
+  "landlord_excuses": [
+    "Oral 2-month Notice Claim",
+    "Vacancy Penalty"
+  ],
+  "evidence_present": [
+    "Email Notice with Timestamp",
+    "Registered Lease Agreement Clause 8",
+    "NEFT Transaction Slip"
+  ],
+  "missing_evidence": [
+    "Date-stamped photos/videos of flat condition at time of key handover",
+    "Itemized GST tax invoices from landlord justifying repair/painting costs",
+    "Written move-in condition inventory signed by both parties"
+  ],
+  "narrative_summary": "Landlord in Gurgaon is unlawfully withholding \u20b945,000 out of \u20b9120,000 deposit citing Notice Period Shortfall / Lock-in Dispute."
+}
+
+[STATUTORY LIMITATION AUDIT]:
+{
+  "valid": true,
+  "limitation_status": "WITHIN_LIMITATION",
+  "years_elapsed": 0.3,
+  "note": "Claim is well within the 3-year statutory window (0.3 years elapsed)."
+}
+
+[LEGAL STANDING & LEVERAGE EVALUATION]:
+Tenant Leverage Score: 75/100
+Verdict: STRONG LEGAL LEVERAGE (HIGH)
+Plain-Language Summary: You have strong legal standing. The landlord's deductions appear to violate standard wear-and-tear principles and statutory deposit return norms. A formal 15-day Legal Demand Notice places severe legal and financial pressure on them to settle.
+
+Deduction Legality Breakdown:
+  - Oral 2-month Notice Claim: SCRUTINY REQUIRED | Governing Law: Section 74 Indian Contract Act (Penalty clauses unenforceable)
+    Rationale: If notice period was disputed, landlord can only offset actual days of notice shortfall, not forfeit the entire security deposit. Penalty clauses without actual damages are void under Sec 74 ICA.
+  - Vacancy Penalty: CONTESTABLE | Governing Law: Section 73 Indian Contract Act
+    Rationale: Unsubstantiated withholding requires itemized proof and receipts from the landlord.
+
+[ANTI-HALLUCINATION VERIFIER]:
+Fabricated Citations Detected & Blocked: 0
+
+[GENERATED 15-DAY FORMAL LEGAL DEMAND NOTICE]:
+================================================================================
+                           LEGAL DEMAND NOTICE
+               (ISSUED UNDER SECTION 73 OF THE INDIAN CONTRACT ACT, 1872
+                  AND PROVISIONS OF THE MODEL TENANCY FRAMEWORK)
+================================================================================
+
+DATE: 08 November 2026
+
+TO:
+Vikram Singh (Property Owner / Lessor)
+Premises located at: Gurgaon, India
+
+FROM:
+Aman Verma (Former Lessee / Tenant)
+Contact / Email: [Insert Your Email & Phone Number]
+
+SUBJECT: FORMAL DEMAND NOTICE FOR UNLAWFUL WITHHOLDING OF SECURITY DEPOSIT 
+         AMOUNTING TO RS. 45,000.00 IN RESPECT OF RESIDENTIAL LEASE 
+         AT GURGAON
+
+Sir / Madam,
+
+Under instructions and on behalf of my client/myself, Aman Verma, residing formerly at the aforementioned residential premises, I hereby serve upon you this formal Statutory Legal Demand Notice:
+
+1. FACTUAL MATRIX & COMMENCEMENT OF TENANCY:
+   That I entered into possession of the residential premises situated at Gurgaon on 2025-07-01. In accordance with the terms of the tenancy, I duly paid an advance refundable security deposit amounting to Rs. 120,000.00 (Rupees 120,000 only) via verifiable banking channels, which was acknowledged and received by you.
+
+2. LAWFUL VACATION & VACANT HANDOVER:
+   That upon due completion of the tenancy term and after serving requisite notice, I lawfully vacated and handed over vacant, peaceful, and unencumbered physical possession of the said premises to you on 2026-07-31. At the time of handover, the premises were left in broom-clean, orderly condition with all utilities fully cleared.
+
+3. UNLAWFUL RETENTION & ARBITRARY DEDUCTIONS:
+   That despite having resumed full physical possession of the premises, you have failed and neglected to refund the balance refundable security deposit of Rs. 45,000.00. Instead, you have unilaterally cited deductions under the pretext of "Oral 2-month Notice Claim, Vacancy Penalty". 
+
+4. LEGAL POSITION & NORMAL WEAR AND TEAR:
+   (a) Normal Wear & Tear Exception: Under settled Indian tenancy jurisprudence and Section 15 of the Model Tenancy framework, expenses for periodic repainting, minor wall fading, and ordinary weathering constitute 'Normal Wear and Tear', which is the sole capital maintenance obligation of the property owner.
+   (b) Absence of Itemized Proof: You have failed to furnish any verified third-party GST tax invoices, pre-existing move-in condition inventories, or legitimate damage assessments to substantiate any deductions.
+   (c) Statutory Refund Norms: Under Section 11 of the Model Tenancy Act, a landlord is obligated to refund the security deposit within 30 days of receiving vacant possession. Unjustified detention of client funds constitutes unjust enrichment.
+   (d) Breach of Contract: Your arbitrary withholding is a direct breach of contract under Section 73 of the Indian Contract Act, 1872, rendering you liable to pay damages and restitution with interest. Furthermore, any unilateral forfeiture clause is void as an unenforceable penalty under Section 74 of the Indian Contract Act.
+
+5. PEREMPTORY DEMAND (15 DAYS NOTICE):
+   I hereby formally call upon you to remit the lawfully due security deposit sum of Rs. 45,000.00 (Rupees 45,000 only) directly into my designated bank account within FIFTEEN (15) DAYS from the date of receipt of this notice, failing which I shall be constrained to initiate formal legal proceedings against you.
+
+6. CONSEQUENCES OF NON-COMPLIANCE:
+   Should you fail to comply with this demand within the stipulated 15-day period:
+   (a) I shall institute a Summary Civil Suit under Order 37 of the Code of Civil Procedure, 1908 before the competent Court of Small Causes for recovery of liquidated debt, claiming interest @ 18% per annum from the date of default until realization.
+   (b) I shall lodge a formal grievance before the District Consumer Disputes Redressal Commission (via e-Daakhil) and the National Consumer Helpline for deficiency in service and unfair trade practice.
+   (c) In such event, you shall be held solely responsible for all litigation costs, advocate fees, and incidental expenses incurred by me.
+
+Please treat this as a final opportunity to resolve this matter amicably without litigation.
+
+Yours faithfully,
+
+_____________________________
+Aman Verma
+Former Lessee / Tenant
+
+DISPATCH INSTRUCTIONS FOR TENANT:
+1. Send a physical copy via Registered Post with Acknowledgment Due (RPAD) or Speed Post to create unshakeable court-admissible postal proof.
+2. Simultaneously send this PDF copy via WhatsApp and Registered Email to the landlord.
+================================================================================
+
+[LANDLORD NEGOTIATION SIMULATOR - SAMPLE TURN]:
+Landlord's Typical Defensive Reply:
+"Look, you stayed there for over a year. There are cleaning expenses and minor maintenance. I am already adjusting very reasonably. If I give everything back, who will pay the painter?"
+
+Paralegal Tactical Tactic Analysis:
+Landlord is conflating routine post-tenancy preparation with tenant-caused damage.
+
+Tenant Recommended Counter-Response:
+"Repainting and routine turnover cleaning are the landlord's operational expenses under Section 15 of MTA. Unless there is deliberate structural breakage substantiated by GST bills and move-in photos, deductions are legally unviable. Please send the itemized bills or refund the balance within 3 days."
+================================================================================

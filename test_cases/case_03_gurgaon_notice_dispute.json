@@ -1,0 +1,17 @@
+{
+  "id": "CASE-03",
+  "title": "Gurgaon Disputed Notice Period Penalty",
+  "tenant_name": "Aman Verma",
+  "landlord_name": "Vikram Singh",
+  "city": "Gurgaon",
+  "user_prompt": "I rented a flat in Sector 48 Gurgaon. I gave 1 month written notice on email on 1st July and vacated 31st July. Deposit was 120000. Landlord cut 45000 saying orally he told me notice period is 2 months, so he deducted 1 month rent as penalty for sudden vacancy. Our written agreement clearly says 1 month notice by either party.",
+  "monthly_rent": 45000,
+  "deposit_paid": 120000,
+  "amount_withheld": 45000,
+  "move_in_date": "2025-07-01",
+  "move_out_date": "2026-07-31",
+  "rental_agreement_present": true,
+  "notice_period_served": true,
+  "evidence_present": ["Email Notice with Timestamp", "Registered Lease Agreement Clause 8", "NEFT Transaction Slip"],
+  "landlord_excuses": ["Oral 2-month Notice Claim", "Vacancy Penalty"]
+}
